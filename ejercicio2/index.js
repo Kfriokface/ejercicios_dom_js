@@ -41,3 +41,16 @@ let itemsToRemove = document.querySelectorAll(".fn-remove-me");
 itemsToRemove.forEach(item => {
   item.remove();
 });
+
+// 2.8 Inserta una p con el texto 'Voy en medio!' entre los dos div. 
+// Recuerda que no solo puedes insertar elementos con .appendChild.
+// NOTA: Doy por hecho que el ejercicio se está refiriendo a los divs con clase "fn-insert-here".
+let newP = document.createTextNode("Voy en medio!");
+let targets = document.querySelectorAll("div.fn-insert-here");
+targets[0].insertAdjacentHTML("afterend", "<p>" + newP.data + "</p>");
+
+//2.9 Inserta p con el texto 'Voy dentro!', dentro de todos los div con la clase .fn-insert-here
+let textoDinamico2 = document.createTextNode("Voy dentro!");
+for (i = 0; i < targets.length; i++) {
+  targets[i].innerHTML = textoDinamico2.data;
+}
