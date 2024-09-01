@@ -16,13 +16,20 @@ let focusInputValue =  function() {
 document.querySelector('.focus').addEventListener('focus', focusInputValue);
 
 // 1.3 Añade un evento 'input' que ejecute un console.log con el valor del input.
+let inputInputValue =  function() {
+  console.log('Valor del input (input): ' + this.value);
+};
+const inputs = document.querySelectorAll('input');
 
+for (let i = 0; i < inputs; i++) {
+  inputs[i].addEventListener('input', inputInputValue);
+}
 // Basandote en el array siguiente, crea una lista ul > li dinámicamente en el html que imprima cada uno de los albums.
 
 const albums = [
   "De Mysteriis Dom Sathanas",
   "Reign of Blood",
-  "Ride the Lightning",
+  "Ride the Lighning",
   "Painkiller",
   "Iron Fist",
 ];
