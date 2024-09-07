@@ -10,20 +10,28 @@ let showEventInfo = function(event) {
 document.getElementById("btnToClick").addEventListener("click", showEventInfo);
 
 // 1.2 Añade un evento 'focus' que ejecute un console.log con el valor del input.
-let focusInputValue =  function() {
-  console.log('Valor del input (focus): ' + this.value);
+let focusInputValue =  function(event) {
+  console.log('Valor del input (focus): ' + event.target.value);
 };
 document.querySelector('.focus').addEventListener('focus', focusInputValue);
 
 // 1.3 Añade un evento 'input' que ejecute un console.log con el valor del input.
-let inputInputValue =  function() {
-  console.log('Valor del input (input): ' + this.value);
-};
-const inputs = document.querySelectorAll('input');
+//NOTA: Como no sé a qué elemento input se refiere el enunciado lo hago para los tres que existen.
 
-for (let i = 0; i < inputs; i++) {
-  inputs[i].addEventListener('input', inputInputValue);
-}
+const clickInput = document.querySelector('.click');
+const focusInput = document.querySelector('.focus');
+const valueInput = document.querySelector('.value');
+
+clickInput.addEventListener('input', (event) => {
+    console.log('Valor del input "click":' + event.target.value);
+});
+focusInput.addEventListener('input', (event) => {
+    console.log('Valor del input "focus":' + event.target.value);
+});
+valueInput.addEventListener('input', (event) => {
+    console.log('Valor del input "value":' + event.target.value);
+});
+
 // Basandote en el array siguiente, crea una lista ul > li dinámicamente en el html que imprima cada uno de los albums.
 
 const albums = [
@@ -33,3 +41,13 @@ const albums = [
   "Painkiller",
   "Iron Fist",
 ];
+
+const ul = document.createElement('ul');
+
+albums.forEach(album => {
+  const li = document.createElement('li');
+  li.textContent = album; 
+  ul.appendChild(li);
+});
+
+document.body.appendChild(ul);
